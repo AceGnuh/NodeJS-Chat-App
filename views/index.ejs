@@ -1,0 +1,521 @@
+<!--
+  Created by: Mai Van Manh
+  Date: 11/02/2020
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Danh sách người dùng</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css    ">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        .user {
+            display: flex;
+            align-items: center;
+            padding: 12px 24px;
+            cursor: pointer;
+        }
+        
+        .user:nth-child(odd) {
+            background-color: #F4F5F7;
+        }
+        
+        .user:hover {
+            background-color: #E6EFFF;
+            transition: 0.3s;
+        }
+        
+        .avatar {
+            font-weight: bold;
+            font-size: 1.5rem;
+            background-color: deepskyblue;
+            width: 50px;
+            height: 50px;
+            margin-right: 16px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white
+        }
+        
+        .user-info {
+            height: 50px;
+            flex-grow: 1;
+        }
+        
+        .user-name {
+            font-size: 1.1rem;
+        }
+        
+        .user-info .online {
+            font-size: 0.9rem;
+            color: rgb(99, 99, 99)
+        }
+        
+        .user .status {
+            width: 90px;
+            text-align: center;
+        }
+        
+        .user:hover {
+            background-color: #E6EFFF;
+        }
+        
+        .user:hover .avatar {
+            background-color: rgb(7, 142, 204);
+            transition: 0.3s;
+        }
+        
+        .user:hover .user-name {
+            font-weight: 450;
+            transition: 0.3s;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        .user {
+            display: flex;
+            align-items: center;
+            padding: 12px 24px;
+            cursor: pointer;
+        }
+        
+        .user:nth-child(odd) {
+            background-color: #F4F5F7;
+        }
+        
+        .user:hover {
+            background-color: #E6EFFF;
+            transition: 0.3s;
+        }
+        
+        .avatar {
+            font-weight: bold;
+            font-size: 1.5rem;
+            background-color: deepskyblue;
+            width: 50px;
+            height: 50px;
+            margin-right: 16px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white
+        }
+        
+        .user-info {
+            height: 50px;
+            flex-grow: 1;
+        }
+        
+        .user-name {
+            font-size: 1.1rem;
+        }
+        
+        .user-info .online {
+            font-size: 0.9rem;
+            color: rgb(99, 99, 99)
+        }
+        
+        .user .status {
+            width: 90px;
+            text-align: center;
+        }
+        
+        .user:hover {
+            background-color: #E6EFFF;
+        }
+        
+        .user:hover .avatar {
+            background-color: rgb(7, 142, 204);
+            transition: 0.3s;
+        }
+        
+        .user:hover .user-name {
+            font-weight: 450;
+            transition: 0.3s;
+        }
+        
+        .conversation {
+            background-color: rgb(158, 158, 158);
+            padding: 24px;
+            height: 75vh;
+            overflow: auto;
+        }
+        
+        .message {
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 12px;
+            width: max-content;
+            max-width: 60%;
+            font-size: 0.9rem;
+        }
+        
+        .img-message {
+            border-radius: 8px;
+            margin-bottom: 12px;
+            width: max-content;
+            max-width: 50%;
+        }
+        
+        .img-message img {
+            max-width: 100%;
+            border-radius: 12px;
+        }
+        
+        .img-message img:hover {
+            opacity: 0.85;
+        }
+        
+        .my-message {
+            border-radius: 12px;
+            background-color: #DBEAFE;
+        }
+        
+        .my-message:hover {
+            background-color: #b4cbe9;
+            transition: 0.3s;
+        }
+        
+        .their-message {
+            border-radius: 12px;
+            background-color: white;
+            margin-right: 0;
+        }
+        
+        .their-message:hover {
+            background-color: rgb(231, 231, 231);
+            transition: 0.3s;
+        }
+        
+        .message .time {
+            margin-top: 2px;
+            display: block;
+            font-size: 0.8rem;
+            color: rgb(102, 102, 102);
+        }
+        
+        .message-input {
+            border-top: 1px solid rgb(190, 190, 190);
+            display: flex;
+            position: relative;
+        }
+        
+        .typing {
+            background-color: rgb(242, 251, 255);
+            border-radius: 4px;
+            padding: 4px 8px;
+            width: fit-content;
+            font-size: 0.7em;
+            position: absolute;
+            top: -25px;
+            left: 2px;
+        }
+        
+        .message-input input[type="text"] {
+            flex-grow: 1;
+            border: none;
+            padding: 8px 16px;
+        }
+        
+        .message-input input[type="text"]:focus {
+            border: none;
+            outline: none;
+            transition: 0.3s;
+        }
+        
+        .message-input #btn-submit {
+            text-decoration: none;
+            padding: 8px;
+            margin: 8px;
+        }
+        
+        .message-input #btn-submit:hover {
+            background-color: rgb(215, 229, 255);
+            border-radius: 4px;
+        }
+        
+        .user .actions {
+            color: rgb(161, 161, 161);
+            font-size: 1.2rem;
+        }
+        
+        .user .actions i {
+            display: inline-block;
+            border-radius: 8px;
+            padding: 12px;
+        }
+        
+        .user .actions i:hover {
+            display: inline-block;
+            color: rgb(128, 128, 128);
+            background-color: rgb(215, 229, 255);
+            transition: 0.3s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row justify-content-start">
+            <div class="col-md-4">
+                <div class="rounded border mt-5 mb-3">
+                    <h4 class="text-primary text-center my-5">Danh sách người dùng trực tuyến</h4>
+                    <h6 class="text-success text-center my-5">Chào mừng
+                        <%= username %> đã đăng nhập</h6>
+                    <p style="padding: 0 24px">Số người online: <strong id="num-user" class="badge badge-danger badge-pill"></strong></p>
+                    <div class="people">
+
+                    </div>
+                </div>
+                <p class="small">Danh sách này cần được cập nhật tự động mỗi khi có người dùng đăng nhập hoặc đăng xuất/thoát. Ngoài ra trạng thái của mỗi người dùng cũng cần được cập nhật mỗi khi họ tham gia hoặc rời một cuộc trò chuyện.
+                </p>
+                <p class="small">Để cho đơn giản, trang web chỉ cần hỗ trợ với mỗi người vào một thời điểm, không thể chat với người có trạng thái là <strong>đang bận</strong>.</p>
+            </div>
+            <div class="col-8" id="chat-area">
+                <div class="rounded border mt-3 mb-3">
+                    <div class="user">
+                        <div class="avatar">C</div>
+                        <div class="user-info">
+                            <div class="user-name">Phạm Công Chánh</div>
+                            <div class="online">Vừa mới truy cập</div>
+                        </div>
+                        <div class="actions">
+                            <i class="fas fa-phone-alt"></i>
+                            <i class="fas fa-video"></i>
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                    <div class="conversation">
+
+                    </div>
+                    <form class="message-input">
+                        <!-- <div class="typing">Phạm Công Chánh đang soạn tin...</div> -->
+                        <input type="text" placeholder="Nhập tin nhắn" id="input-value">
+                        <input type="submit" id="btn-submit" class="btn btn-primary" value="Gửi">
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="message"></div>
+</body>
+<script src="socket.io/socket.io.js"></script>
+<script>
+    const socket = io();
+    let onlineUsers = []
+    let numberUsers = $("#num-user")
+    let message = $(".message")
+    let chatArea = $("#chat-area")
+    let nameCurChat = $(".user .user-name")
+    let avatarCurChat = $(".user .user-info .cur-avatar")
+    let inputValue = $("#input-value")
+    let btnSubmit = $("#btn-submit")
+    let conversation = $(".conversation")
+
+    $(document).ready(function() {
+
+
+        chatArea.css("display", "none")
+
+        console.log('Mở kết nối tới server')
+
+        socket.on('connect', handleConnect)
+        socket.on('disconnect', () => console.log('Đã mất kết nối tới server'))
+
+        socket.on('list-users', handleUserList)
+        socket.on('new-user', handleNewUser)
+        socket.on('user-leave', handleUserLeave)
+
+        $(document).on('click', '.username ', function(e) {
+            e.preventDefault()
+            chatArea.css('display', 'block')
+            let friendId = $(this).attr('data-id')
+
+            let curUser = onlineUsers.find(u => u.id === friendId)
+
+            console.log("Current user: " + JSON.stringify(curUser))
+            nameCurChat.html(curUser.name)
+            avatarCurChat.html(getCharacterAvatar(curUser.name))
+
+            inputValue.keyup(function() {
+                //console.log("Key up: " + inputValue.val())
+                socket.emit('typing', {
+                    to: curUser.id,
+                    name: curUser.name,
+                })
+            })
+
+            $(document).on('click', '#btn-submit', function(e) {
+                e.preventDefault()
+
+                let curInputValue = inputValue.val()
+
+                //console.log("Data input: " + inputValue.val())
+                socket.emit('private message', {
+                    to: curUser.id,
+                    message: curInputValue
+                })
+
+                inputValue.val("")
+                addMyMessage(curInputValue)
+            })
+        })
+
+        socket.on('private message', ({
+            from,
+            message
+        }) => {
+            console.log("Message receive: " + message)
+            addFriendMessage(message)
+        })
+
+        socket.on('typing', ({
+            from,
+            name
+        }) => {
+            if (socket.id !== from) {
+                addOnTyping(name)
+            }
+        })
+    })
+
+    function handleConnect() {
+        console.log('Đã kết nối tới server với id: ' + socket.id)
+    }
+
+    function handleUserList(users) {
+        console.log('Danh sách user online')
+
+        users.forEach(user => {
+            console.log(user)
+            if (user.id !== socket.id) {
+                onlineUsers.push(user)
+            }
+        })
+
+        numberUsers.html(onlineUsers.length)
+        displayUserOnline()
+    }
+
+    function handleNewUser(user) {
+        console.log('Một người mới đã online: ')
+
+        let index = onlineUsers.findIndex(u => u._id === user._id)
+        console.log("Index: " + index)
+
+        onlineUsers.push(user)
+
+        console.log('Danh sách online user hiện tại')
+        onlineUsers.forEach(u => console.log(u))
+
+        //Tăng số người hiện tại trong phòng chat khi có user mới online
+        numberUsers.html(onlineUsers.length)
+        displayUserOnline()
+
+        //alert user vừa online
+        message.html(
+            `<div id="online-notification" class="alert alert-success d-inline position-fixed small" style="bottom: 20px; left: 20px">
+                <strong>${user.name}</strong> vừa mới online
+            </div>`)
+
+        setTimeout(function() {
+            message.html('')
+        }, 2500)
+    }
+
+    function handleUserLeave(user) {
+        onlineUsers = onlineUsers.filter(u => u.id !== user.id)
+        console.log(`User ${user.id} đã rời phòng. Ngoài bạn ra còn lại ${onlineUsers.length} user`)
+
+        console.log("Danh sách user hiện tại")
+        onlineUsers.forEach(u => console.log(u))
+            //Giảm số người hiện tại trong phòng chat
+        numberUsers.html(onlineUsers.length)
+        displayUserOnline()
+
+        //alert user vừa offline
+        message.html(
+            `<div id="offline-notification" class="alert alert-danger d-inline position-fixed small" style="bottom: 20px; right: 20px">
+                <strong>${user.name}</strong> đã thoát khỏi ứng dụng
+            </div>`)
+
+        setTimeout(function() {
+            message.html('')
+        }, 2500)
+    }
+
+    function displayUserOnline() {
+
+        $('.people').html('')
+        onlineUsers.forEach(user => {
+
+            let status = user.free === true ? ' <div class="badge badge-success badge-pill">Đang rảnh</div>' : '<div class="badge badge-warning badge-pill">Đang bận</div>'
+
+            $('.people').prepend(`
+                <div class="user">
+                    <div class="avatar">${getCharacterAvatar(user.name)}</div>
+                    <div class="user-info">
+                        <div class="user-name"><a class="username" href="#" data-id="${user.id}">${user.name}</a></div>
+                        <div class="online">Truy cập lúc: ${user.loginAt}</div>
+                    </div>
+                    <div class="status">
+                        ${status}
+                    </div>
+                </div>
+            `)
+        })
+    }
+
+    function addMyMessage(message) {
+        let html = `
+            <div class="row justify-content-end">
+                <div class="message my-message">${message}
+                    <span class="time">08:59</span>
+                </div>
+            </div>
+            `
+        conversation.append(html)
+    }
+
+    function addFriendMessage(message) {
+        let html = `
+            <div class="row justify-content-start">
+                <div class="message their-message">${message}
+                    <span class="time">08:59</span>
+                </div>
+            </div>    
+        `
+        conversation.append(html)
+    }
+
+    function addOnTyping(name) {
+        $(".message-input").append(`<div class="typing">${name} đang soạn tin...</div>`)
+
+        setTimeout(() => {
+            $(".message-input .typing").remove()
+        }, 1000)
+    }
+
+    function getCharacterAvatar(name) {
+        let names = name.split(' ')
+
+        return names[names.length - 1][0]
+    }
+</script>
+
+</html>
